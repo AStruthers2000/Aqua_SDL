@@ -161,13 +161,21 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Aqua.cpp" />
+    <ClCompile Include="Core\Source\Engine\Game.cpp" />
+    <ClCompile Include="Core\Source\Engine\GameStates\GameState_MainMenu.cpp" />
+    <ClCompile Include="Core\Source\Engine\GameStates\GameState_Overworld.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Core\Assets\" />
-    <Folder Include="Core\Include\" />
     <Folder Include="Core\Save\" />
-    <Folder Include="Core\Source\" />
     <Folder Include="thirdparty\SDL\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Core\Source\Engine\EngineParameters.h" />
+    <ClInclude Include="Core\Source\Engine\Game.h" />
+    <ClInclude Include="Core\Source\Engine\GameStates\GameState.h" />
+    <ClInclude Include="Core\Source\Engine\GameStates\GameState_MainMenu.h" />
+    <ClInclude Include="Core\Source\Engine\GameStates\GameState_Overworld.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
