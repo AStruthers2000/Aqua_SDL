@@ -162,8 +162,11 @@
   <ItemGroup>
     <ClCompile Include="Aqua.cpp" />
     <ClCompile Include="Core\Source\Engine\Game.cpp" />
+    <ClCompile Include="Core\Source\Engine\GameStates\GameState_FishingBattle.cpp" />
     <ClCompile Include="Core\Source\Engine\GameStates\GameState_MainMenu.cpp" />
     <ClCompile Include="Core\Source\Engine\GameStates\GameState_Overworld.cpp" />
+    <ClCompile Include="Core\Source\Engine\GameStates\GameSubState_FishingHook.cpp" />
+    <ClCompile Include="Core\Source\Engine\GameStates\GameSubState_PauseMenu.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Core\Assets\" />
@@ -174,8 +177,12 @@
     <ClInclude Include="Core\Source\Engine\EngineParameters.h" />
     <ClInclude Include="Core\Source\Engine\Game.h" />
     <ClInclude Include="Core\Source\Engine\GameStates\GameState.h" />
+    <ClInclude Include="Core\Source\Engine\GameStates\GameState_FishingBattle.h" />
     <ClInclude Include="Core\Source\Engine\GameStates\GameState_MainMenu.h" />
     <ClInclude Include="Core\Source\Engine\GameStates\GameState_Overworld.h" />
+    <ClInclude Include="Core\Source\Engine\GameStates\GameSubState.h" />
+    <ClInclude Include="Core\Source\Engine\GameStates\GameSubState_FishingHook.h" />
+    <ClInclude Include="Core\Source\Engine\GameStates\GameSubState_PauseMenu.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

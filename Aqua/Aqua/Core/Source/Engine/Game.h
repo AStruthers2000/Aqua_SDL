@@ -2,12 +2,14 @@
 
 //#include <memory>
 //#include <stack>
-#include <SDL.h>
 import std;
+#include <SDL.h>
 #include "EngineParameters.h"
 #include "GameStates/GameState.h"
+#include "GameStates/GameSubState.h"
 
-class GameState;
+//class GameState;
+//class GameSubState;
 
 class Game
 {
