@@ -12,7 +12,7 @@ GameState_Overworld::~GameState_Overworld()
 {
     std::cout << "Destroying overworld game state" << std::endl;
 
-    
+    //TODO: remove this deleting of actors from this class
     for(const auto& actor : actors_)
     {
         RemoveActor(actor);
@@ -75,6 +75,7 @@ void GameState_Overworld::Tick(float delta_time)
 
     //Overworld logic here
 
+    //TODO: remove this updating of actors from this class
     for(const auto& actor : actors_)
     {
         actor->Tick(delta_time);
