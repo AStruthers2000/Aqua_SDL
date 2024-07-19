@@ -1,10 +1,7 @@
 ﻿#include "GameState_MainMenu.h"
 
-#include "../Game.h"
-#include "GameState_Overworld.h"
-
-//import std;
-
+#include <iostream>
+#include "Game.h"
 
 GameState_MainMenu::~GameState_MainMenu()
 {

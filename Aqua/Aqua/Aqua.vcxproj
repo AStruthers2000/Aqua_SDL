@@ -110,9 +110,9 @@
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <LanguageStandard>stdcpplatest</LanguageStandard>
-      <EnableModules>true</EnableModules>
+      <EnableModules>false</EnableModules>
       <BuildStlModules>true</BuildStlModules>
-      <AdditionalIncludeDirectories>$(SolutionDir)\Aqua\thirdparty\SDL\Source\SDL2-2.30.2\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)\Aqua\thirdparty\SDL\Source\SDL2-2.30.2\include;$(SolutionDir)\Aqua\Core\Source\Engine</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -161,12 +161,16 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Aqua.cpp" />
+    <ClCompile Include="Core\Source\Engine\Actor\Actor.cpp" />
+    <ClCompile Include="Core\Source\Engine\Actor\Component.cpp" />
     <ClCompile Include="Core\Source\Engine\Game.cpp" />
-    <ClCompile Include="Core\Source\Engine\GameStates\GameState_FishingBattle.cpp" />
-    <ClCompile Include="Core\Source\Engine\GameStates\GameState_MainMenu.cpp" />
-    <ClCompile Include="Core\Source\Engine\GameStates\GameState_Overworld.cpp" />
-    <ClCompile Include="Core\Source\Engine\GameStates\GameSubState_FishingHook.cpp" />
-    <ClCompile Include="Core\Source\Engine\GameStates\GameSubState_PauseMenu.cpp" />
+    <ClCompile Include="Core\Source\Engine\GameStates\GameState.cpp" />
+    <ClCompile Include="Core\Source\Game\Actors\A_Test.cpp" />
+    <ClCompile Include="Core\Source\Game\GameStates\GameState_FishingBattle.cpp" />
+    <ClCompile Include="Core\Source\Game\GameStates\GameState_MainMenu.cpp" />
+    <ClCompile Include="Core\Source\Game\GameStates\GameState_Overworld.cpp" />
+    <ClCompile Include="Core\Source\Game\GameStates\GameSubState_FishingHook.cpp" />
+    <ClCompile Include="Core\Source\Game\GameStates\GameSubState_PauseMenu.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Core\Assets\" />
@@ -174,15 +178,19 @@
     <Folder Include="thirdparty\SDL\" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Core\Source\Engine\Actor\Actor.h" />
+    <ClInclude Include="Core\Source\Engine\Actor\Component.h" />
     <ClInclude Include="Core\Source\Engine\EngineParameters.h" />
     <ClInclude Include="Core\Source\Engine\Game.h" />
     <ClInclude Include="Core\Source\Engine\GameStates\GameState.h" />
-    <ClInclude Include="Core\Source\Engine\GameStates\GameState_FishingBattle.h" />
-    <ClInclude Include="Core\Source\Engine\GameStates\GameState_MainMenu.h" />
-    <ClInclude Include="Core\Source\Engine\GameStates\GameState_Overworld.h" />
     <ClInclude Include="Core\Source\Engine\GameStates\GameSubState.h" />
-    <ClInclude Include="Core\Source\Engine\GameStates\GameSubState_FishingHook.h" />
-    <ClInclude Include="Core\Source\Engine\GameStates\GameSubState_PauseMenu.h" />
+    <ClInclude Include="Core\Source\Engine\Math\Vector.h" />
+    <ClInclude Include="Core\Source\Game\Actors\A_Test.h" />
+    <ClInclude Include="Core\Source\Game\GameStates\GameState_FishingBattle.h" />
+    <ClInclude Include="Core\Source\Game\GameStates\GameState_MainMenu.h" />
+    <ClInclude Include="Core\Source\Game\GameStates\GameState_Overworld.h" />
+    <ClInclude Include="Core\Source\Game\GameStates\GameSubState_FishingHook.h" />
+    <ClInclude Include="Core\Source\Game\GameStates\GameSubState_PauseMenu.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

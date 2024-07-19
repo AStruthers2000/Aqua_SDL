@@ -1,8 +1,9 @@
-import std;
+//import std;
 
 #include <SDL.h>
 
-#include "Core/Source/Engine/Game.h"
+
+#include "Game.h"
 
 int main(int argc, char* argv[]) {
     /*
@@ -30,13 +31,14 @@ int main(int argc, char* argv[]) {
     SDL_Quit();
     */
 
-    const auto game = new Game();
+    
+    const auto game = new AquaEngine::Game();
     if(game->IsRunning())
     {
         game->Run();
     }
 
     delete game;
-
+    
     return 0;
 }

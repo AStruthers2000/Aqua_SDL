@@ -1,19 +1,28 @@
 ﻿#include "GameState_Overworld.h"
 
-#include "../Game.h"
-#include "GameSubState.h"
-#include "GameState_MainMenu.h"
+#include <iostream>
+
+#include "Game.h"
+#include "Actor/Actor.h"
 #include "GameSubState_FishingHook.h"
 #include "GameSubState_PauseMenu.h"
+#include "../Actors/A_Test.h"
 
 GameState_Overworld::~GameState_Overworld()
 {
     std::cout << "Destroying overworld game state" << std::endl;
+
+    
+    for(const auto& actor : actors_)
+    {
+        RemoveActor(actor);
+    }
 }
 
 void GameState_Overworld::BeginPlay()
 {
     std::cout << "Loading overworld game state" << std::endl;
+    AddActor(new A_Test(this));
 }
 
 void GameState_Overworld::HandleInput(SDL_Event& event)
@@ -34,6 +43,7 @@ void GameState_Overworld::HandleInput(SDL_Event& event)
                 break;
             case SDLK_f:
                 std::cout << "Pressing f:\n\tStarted fishing" << std::endl;
+                //SetSubState(new GameSubState_FishingHook(game_manager, this));
                 SetSubState(std::make_unique<GameSubState_FishingHook>(game_manager, this));
                 break;
             case SDLK_ESCAPE:
@@ -42,6 +52,7 @@ void GameState_Overworld::HandleInput(SDL_Event& event)
                 //game_manager->ChangeState(std::make_unique<GameState_MainMenu>(game_manager));
                 if(!current_substate)
                 {
+                    //SetSubState(new GameSubState_PauseMenu(game_manager, this));
                     SetSubState(std::make_unique<GameSubState_PauseMenu>(game_manager, this));
                 }
                 else
@@ -63,6 +74,11 @@ void GameState_Overworld::Tick(float delta_time)
     }
 
     //Overworld logic here
+
+    for(const auto& actor : actors_)
+    {
+        actor->Tick(delta_time);
+    }
 }
 
 void GameState_Overworld::Render(SDL_Renderer* renderer)

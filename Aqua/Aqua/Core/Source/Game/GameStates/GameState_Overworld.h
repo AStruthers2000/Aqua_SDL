@@ -1,11 +1,11 @@
 ﻿#pragma once
-#include "GameState.h"
-#include "GameSubState.h"
+#include "GameStates/GameState.h"
 
-class GameState_Overworld : public GameState
+
+class GameState_Overworld : public AquaEngine::GameState
 {
 public:
-    explicit GameState_Overworld(Game* game)
+    explicit GameState_Overworld(AquaEngine::Game* game)
         : GameState(game)//, current_substate(nullptr)
     {
     }

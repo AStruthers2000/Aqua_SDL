@@ -1,18 +1,16 @@
 ﻿#pragma once
+#include "GameStates/GameState.h"
 
-#include "GameState.h"
-#include "GameSubState.h"
 
-class GameState_MainMenu : public GameState
+class GameState_FishingBattle : public AquaEngine::GameState
 {
 public:
-    explicit GameState_MainMenu(Game* game)
+    explicit GameState_FishingBattle(AquaEngine::Game* game)
         : GameState(game)
     {
     }
 
-    ~GameState_MainMenu() override;
-
+    ~GameState_FishingBattle() override;
     void BeginPlay() override;
     void HandleInput(SDL_Event& event) override;
     void Tick(float delta_time) override;

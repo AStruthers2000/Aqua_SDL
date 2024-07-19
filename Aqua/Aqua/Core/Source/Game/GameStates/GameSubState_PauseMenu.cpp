@@ -1,7 +1,9 @@
 ﻿#include "GameSubState_PauseMenu.h"
 
+#include <iostream>
 
 #include "GameState_MainMenu.h"
+#include "Game.h"
 
 GameSubState_PauseMenu::~GameSubState_PauseMenu()
 {

@@ -1,6 +1,8 @@
 ﻿#include "GameSubState_FishingHook.h"
-
 #include "GameState_FishingBattle.h"
+
+#include <iostream>
+#include "Game.h"
 
 GameSubState_FishingHook::~GameSubState_FishingHook()
 {

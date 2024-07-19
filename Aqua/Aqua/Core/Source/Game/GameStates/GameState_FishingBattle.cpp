@@ -1,6 +1,7 @@
 ﻿#include "GameState_FishingBattle.h"
 
 #include "GameSubState_PauseMenu.h"
+#include <iostream>
 
 GameState_FishingBattle::~GameState_FishingBattle()
 {
@@ -30,6 +31,7 @@ void GameState_FishingBattle::HandleInput(SDL_Event& event)
                 break;
             case SDLK_ESCAPE:
                 std::cout << "Pressing escape:\n\tPausing game" << std::endl;
+                //SetSubState(new GameSubState_PauseMenu(game_manager, this));
                 SetSubState(std::make_unique<GameSubState_PauseMenu>(game_manager, this));
                 break;
             default: break;

@@ -1,15 +1,17 @@
 ﻿#pragma once
-#include "GameSubState.h"
+#include "GameState_Overworld.h"
 
-class GameSubState_PauseMenu : public GameSubState
+
+class GameState_MainMenu : public AquaEngine::GameState
 {
 public:
-    GameSubState_PauseMenu(Game* game, GameState* parent)
-        : GameSubState(game, parent)
+    explicit GameState_MainMenu(AquaEngine::Game* game)
+        : GameState(game)
     {
     }
 
-    ~GameSubState_PauseMenu() override;
+    ~GameState_MainMenu() override;
+
     void BeginPlay() override;
     void HandleInput(SDL_Event& event) override;
     void Tick(float delta_time) override;
