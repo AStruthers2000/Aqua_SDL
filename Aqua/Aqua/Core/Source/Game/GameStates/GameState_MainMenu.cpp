@@ -2,6 +2,7 @@
 
 #include <iostream>
 #include "Game.h"
+#include "GameState_ChessDemo.h"
 
 GameState_MainMenu::~GameState_MainMenu()
 {
@@ -21,7 +22,10 @@ void GameState_MainMenu::HandleInput(SDL_Event& event)
         {
             std::cout << "Pressing enter:\n\tLoading overworld state" << std::endl;
             //transition to open world state
-            game_manager->ChangeState(std::make_unique<GameState_Overworld>(game_manager));
+            //game_manager->ChangeState(std::make_unique<GameState_Overworld>(game_manager));
+
+            //transition to chess demo state
+            game_manager->ChangeState(std::make_unique<GameState_ChessDemo>(game_manager));
         }
     }
 }
