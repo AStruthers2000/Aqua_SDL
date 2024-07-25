@@ -4,8 +4,8 @@
 class GameSubState_PauseMenu : public AquaEngine::GameSubState
 {
 public:
-    GameSubState_PauseMenu(AquaEngine::Game* game, GameState* parent)
-        : GameSubState(game, parent)
+    GameSubState_PauseMenu(AquaEngine::Game* game, const std::string& name, GameState* parent)
+        : GameSubState(game, name, parent)
     {
     }
 

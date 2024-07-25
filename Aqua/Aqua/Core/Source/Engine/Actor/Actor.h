@@ -25,10 +25,18 @@ namespace AquaEngine
         virtual void Tick(float delta_time) final;
         virtual void TickComponents(float delta_time) final;
 
+        virtual void BeginPlay() = 0;
         virtual void TickActor(float delta_time) = 0;
 
         void AddComponent(Component* component);
         void RemoveComponent(const Component* component);
+
+        State GetActorState() const { return state_; }
+        GameState* GetActorWorld() const { return game_state_; }
+        Vector2<float> GetActorPosition() const { return position_; }
+
+        void SetActorPosition(const Vector2<float>& new_position) { position_ = new_position; }
+        void SetActorState(State new_state) { state_ = new_state; }
 
     private:
         State state_;

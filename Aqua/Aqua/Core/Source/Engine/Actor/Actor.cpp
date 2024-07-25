@@ -1,6 +1,6 @@
 ﻿
 #include "Actor.h"
-#include "Component.h"
+#include "Component/Component.h"
 #include "Math/Vector.h"
 
 namespace AquaEngine
@@ -8,15 +8,18 @@ namespace AquaEngine
     Actor::Actor(GameState* game_state) :  game_state_(game_state)
     {
         state_ = EActive;
-        position_ = {0.f, 0.f};
+        position_ = {0, 0};
         scale_ = {1, 1};
         rotation_ = 0;
     }
 
     void Actor::Tick(float delta_time)
     {
-        TickComponents(delta_time);
-        TickActor(delta_time);
+        if(state_ == EActive)
+        {
+            TickComponents(delta_time);
+            TickActor(delta_time);
+        }
     }
 
     void Actor::TickComponents(float delta_time)

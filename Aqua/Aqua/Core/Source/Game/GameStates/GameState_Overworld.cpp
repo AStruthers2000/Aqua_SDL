@@ -13,10 +13,10 @@ GameState_Overworld::~GameState_Overworld()
     std::cout << "Destroying overworld game state" << std::endl;
 
     //TODO: remove this deleting of actors from this class
-    for(const auto& actor : actors_)
-    {
-        RemoveActor(actor);
-    }
+    //for(const auto& actor : actors_)
+    //{
+    //    RemoveActor(actor);
+    //}
 }
 
 void GameState_Overworld::BeginPlay()
@@ -44,7 +44,7 @@ void GameState_Overworld::HandleInput(SDL_Event& event)
             case SDLK_f:
                 std::cout << "Pressing f:\n\tStarted fishing" << std::endl;
                 //SetSubState(new GameSubState_FishingHook(game_manager, this));
-                SetSubState(std::make_unique<GameSubState_FishingHook>(game_manager, this));
+                SetSubState(std::make_unique<GameSubState_FishingHook>(game_manager, "Fishing Hook", this));
                 break;
             case SDLK_ESCAPE:
                 std::cout << "Pressing escape:\n\tPausing game" << std::endl;
@@ -53,7 +53,7 @@ void GameState_Overworld::HandleInput(SDL_Event& event)
                 if(!current_substate)
                 {
                     //SetSubState(new GameSubState_PauseMenu(game_manager, this));
-                    SetSubState(std::make_unique<GameSubState_PauseMenu>(game_manager, this));
+                    SetSubState(std::make_unique<GameSubState_PauseMenu>(game_manager, "Pause Menu", this));
                 }
                 else
                 {
@@ -76,10 +76,10 @@ void GameState_Overworld::Tick(float delta_time)
     //Overworld logic here
 
     //TODO: remove this updating of actors from this class
-    for(const auto& actor : actors_)
-    {
-        actor->Tick(delta_time);
-    }
+    //for(const auto& actor : actors_)
+    //{
+    //    actor->Tick(delta_time);
+    //}
 }
 
 void GameState_Overworld::Render(SDL_Renderer* renderer)

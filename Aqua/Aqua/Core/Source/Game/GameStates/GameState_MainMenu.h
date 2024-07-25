@@ -5,8 +5,8 @@
 class GameState_MainMenu : public AquaEngine::GameState
 {
 public:
-    explicit GameState_MainMenu(AquaEngine::Game* game)
-        : GameState(game)
+    explicit GameState_MainMenu(AquaEngine::Game* game, const std::string& name)
+        : GameState(game, name)
     {
     }
 

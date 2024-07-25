@@ -22,7 +22,7 @@ void GameSubState_FishingHook::HandleInput(SDL_Event& event)
     if(event.type == SDL_KEYDOWN && event.key.keysym.sym == SDLK_f)
     {
         //ExitSubstate();
-        game_manager->ChangeState(std::make_unique<GameState_FishingBattle>(game_manager));
+        game_manager->ChangeState(std::make_unique<GameState_FishingBattle>(game_manager, "Fishing Battle"));
     }
 
     //handle fishing-specific input

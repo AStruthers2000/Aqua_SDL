@@ -4,18 +4,37 @@
 
 #include "GameSubState_PauseMenu.h"
 
+#include "../Actors/A_Test.h"
+
+#include "Component/C_Render.h"
+
 GameState_ChessDemo::~GameState_ChessDemo()
 {
     std::cout << "Destroying chess demo" << std::endl;
+    //TODO: this line is the issue... for some reason
+    //GameState::~GameState();
+    std::cout << "Successfully called parent destructor" << std::endl;
+
+    //TODO: remove this deleting of actors from this class
+    //for(const auto& actor : actors_)
+    //{
+    //    RemoveActor(actor);
+    //}
 }
 
 void GameState_ChessDemo::BeginPlay()
 {
+    GameState::BeginPlay();
+    
     std::cout << "Starting chess demo" << std::endl;
+
+    AddActor(new A_Test(this));
 }
 
 void GameState_ChessDemo::HandleInput(SDL_Event& event)
 {
+    GameState::HandleInput(event);
+    
     if(current_substate)
     {
         std::cout << "Valid chess demo substate, handling input there instead" << std::endl;
@@ -32,7 +51,7 @@ void GameState_ChessDemo::HandleInput(SDL_Event& event)
 
                 if(!current_substate)
                 {
-                    SetSubState(std::make_unique<GameSubState_PauseMenu>(game_manager, this));
+                    SetSubState(std::make_unique<GameSubState_PauseMenu>(game_manager, "Pause Menu", this));
                 }
                 break;
             default: break;
@@ -43,15 +62,20 @@ void GameState_ChessDemo::HandleInput(SDL_Event& event)
 
 void GameState_ChessDemo::Tick(float delta_time)
 {
+    GameState::Tick(delta_time);
+    
 }
 
 void GameState_ChessDemo::Render(SDL_Renderer* renderer)
 {
+    
+    
     //Render chess demo
     SDL_SetRenderDrawColor(renderer, 75, 75, 75, 255);
     SDL_RenderClear(renderer);
 
     //add chess demo rendering code
+    GameState::Render(renderer);
 
     //if there is a substate, render that on top of the current state
     if(current_substate)
@@ -61,3 +85,4 @@ void GameState_ChessDemo::Render(SDL_Renderer* renderer)
 
     SDL_RenderPresent(renderer);
 }
+

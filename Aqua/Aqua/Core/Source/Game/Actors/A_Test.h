@@ -15,6 +15,7 @@ public:
     }
 
     ~A_Test() override;
+    void BeginPlay() override;
     void TickActor(float delta_time) override;
 
 private:

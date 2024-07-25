@@ -38,7 +38,7 @@ namespace AquaEngine
             std::cerr << "Renderer could not be created! SDL_Error: " << SDL_GetError() << std::endl;
         }
 
-        PushGameState(std::make_unique<GameState_MainMenu>(this));
+        PushGameState(std::make_unique<GameState_MainMenu>(this, "Main Menu"));
 
         is_running = true;
         std::cout << "Game initialized successfully" << std::endl;
@@ -62,21 +62,30 @@ namespace AquaEngine
         const float frame_delay { 1000.0f / target_fps };
         std::cout << "Running game with a target FPS of " << target_fps << " and a frame delay of " << frame_delay << " ms" << std::endl;
 
-        float frame_time { 0.f };
+        //float frame_time { 0.f };
+        Uint64 tick_count_from_start { 0 };
 
         while(IsRunning())
         {
-            const Uint64 frame_start = SDL_GetTicks64();
+            while(!SDL_TICKS_PASSED(SDL_GetTicks64(), static_cast<Uint64>(static_cast<float>(tick_count_from_start) + frame_delay)))
+                ;
+
+            float delta_time = static_cast<float>(SDL_GetTicks64() - tick_count_from_start) / 1000.f;
+            //if(delta_time > 0.05f) delta_time = 0.05f;
+            if(delta_time > 1.f)
+            {
+                std::cerr << "Less than 1 fps detected..." << std::endl;
+                delta_time = 1.f;
+            }
+            tick_count_from_start = SDL_GetTicks64();
 
             HandleEvents();
-            Update(frame_time / 1000.f);
+            Update(delta_time);
             Render();
 
-            frame_time = static_cast<float>(SDL_GetTicks64() - frame_start);
-            if(frame_delay > frame_time)
-            {
-                SDL_Delay(static_cast<Uint32>(frame_delay - frame_time));
-            }
+
+            std::cout << "delta time: " << delta_time << std::endl;
+            std::cout << "frame ticks: " << tick_count_from_start << std::endl;
         }
     }
 

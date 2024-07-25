@@ -7,8 +7,8 @@ namespace AquaEngine
     class GameSubState : public GameState
     {
     public:
-        explicit GameSubState(Game* game, GameState* parent)
-            : GameState(game), parent_state(parent)
+        explicit GameSubState(Game* game, const std::string& name, GameState* parent)
+            : GameState(game, name), parent_state(parent)
         {
         }
 

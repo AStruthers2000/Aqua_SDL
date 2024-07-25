@@ -1,3 +1,3 @@
 ﻿#pragma once
 
-constexpr float FPS { 60.0f };
+constexpr float FPS { 144.f };

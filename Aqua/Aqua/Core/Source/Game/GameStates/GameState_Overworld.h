@@ -5,8 +5,8 @@
 class GameState_Overworld : public AquaEngine::GameState
 {
 public:
-    explicit GameState_Overworld(AquaEngine::Game* game)
-        : GameState(game)//, current_substate(nullptr)
+    explicit GameState_Overworld(AquaEngine::Game* game, const std::string& name)
+        : GameState(game, name)//, current_substate(nullptr)
     {
     }
 

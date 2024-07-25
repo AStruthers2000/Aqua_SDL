@@ -4,8 +4,8 @@
 class GameSubState_FishingHook : public AquaEngine::GameSubState
 {
 public:
-    explicit GameSubState_FishingHook(AquaEngine::Game* game, GameState* parent)
-        : GameSubState(game, parent)
+    explicit GameSubState_FishingHook(AquaEngine::Game* game, const std::string& name, GameState* parent)
+        : GameSubState(game, name, parent)
     {
     }
 

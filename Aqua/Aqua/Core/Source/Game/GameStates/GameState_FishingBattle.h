@@ -5,8 +5,8 @@
 class GameState_FishingBattle : public AquaEngine::GameState
 {
 public:
-    explicit GameState_FishingBattle(AquaEngine::Game* game)
-        : GameState(game)
+    explicit GameState_FishingBattle(AquaEngine::Game* game, const std::string& name)
+        : GameState(game, name)
     {
     }
 

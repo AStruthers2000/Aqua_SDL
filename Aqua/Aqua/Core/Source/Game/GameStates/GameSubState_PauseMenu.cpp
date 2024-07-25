@@ -4,15 +4,25 @@
 
 #include "GameState_MainMenu.h"
 #include "Game.h"
+#include <vector>
+#include "Actor/Actor.h"
 
 GameSubState_PauseMenu::~GameSubState_PauseMenu()
 {
     std::cout << "Destroying pause menu sub state" << std::endl;
+
+    for(const auto& actor : parent_state->GetActors())
+    {
+        actor->SetActorState(AquaEngine::Actor::EActive);
+    }
 }
 
 void GameSubState_PauseMenu::BeginPlay()
 {
-
+    for(const auto& actor : parent_state->GetActors())
+    {
+        actor->SetActorState(AquaEngine::Actor::EPaused);
+    }
 }
 
 void GameSubState_PauseMenu::HandleInput(SDL_Event& event)
@@ -22,7 +32,7 @@ void GameSubState_PauseMenu::HandleInput(SDL_Event& event)
         switch(event.key.keysym.sym)
         {
         case SDLK_RETURN:
-            game_manager->ChangeState(std::make_unique<GameState_MainMenu>(game_manager));
+            game_manager->ChangeState(std::make_unique<GameState_MainMenu>(game_manager, "Main Menu"));
             break;
         case SDLK_ESCAPE:
             ExitSubstate();
