@@ -1,5 +1,6 @@
 ﻿#pragma once
 
+#include <memory>
 #include <vector>
 
 #include "Math/Vector.h"
@@ -28,8 +29,8 @@ namespace AquaEngine
         virtual void BeginPlay() = 0;
         virtual void TickActor(float delta_time) = 0;
 
-        void AddComponent(Component* component);
-        void RemoveComponent(const Component* component);
+        void AddComponent(const std::shared_ptr<Component>& component);
+        void RemoveComponent(const std::shared_ptr<Component>& component);
 
         State GetActorState() const { return state_; }
         GameState* GetActorWorld() const { return game_state_; }
@@ -44,7 +45,7 @@ namespace AquaEngine
         Vector2<float> scale_;
         float rotation_;
 
-        std::vector<Component*> components_;
+        std::vector<std::shared_ptr<Component>> components_;
         GameState* game_state_;
     };
 }

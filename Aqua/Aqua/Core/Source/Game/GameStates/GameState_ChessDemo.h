@@ -3,7 +3,7 @@
 
 namespace AquaEngine
 {
-    class C_Render;
+    class CRenderer;
 }
 
 class GameState_ChessDemo : public AquaEngine::GameState

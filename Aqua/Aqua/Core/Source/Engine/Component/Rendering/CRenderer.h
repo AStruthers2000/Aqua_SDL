@@ -1,14 +1,14 @@
 ﻿#pragma once
 #include <SDL_render.h>
-#include "Component.h"
+#include "Component/Component.h"
 #include "GameStates/GameState.h"
 
 namespace AquaEngine
 {
-    class C_Render : public Component
+    class CRenderer : public Component
     {
     public:
-        C_Render(Actor* owner, int draw_order)
+        CRenderer(Actor* owner, int draw_order)
             : Component(owner), draw_order_(draw_order)
         {
             owner->GetActorWorld()->RegisterRendererComponent(this);

@@ -6,7 +6,7 @@
 #include "Actor/Actor.h"
 #include "GameSubState_FishingHook.h"
 #include "GameSubState_PauseMenu.h"
-#include "../Actors/A_Test.h"
+#include "../Actors/ATest.h"
 
 GameState_Overworld::~GameState_Overworld()
 {
@@ -22,7 +22,7 @@ GameState_Overworld::~GameState_Overworld()
 void GameState_Overworld::BeginPlay()
 {
     std::cout << "Loading overworld game state" << std::endl;
-    AddActor(new A_Test(this));
+    //AddActor(new ATest(this));
 }
 
 void GameState_Overworld::HandleInput(SDL_Event& event)

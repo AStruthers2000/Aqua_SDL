@@ -1,12 +1,12 @@
-﻿#include "C_Test.h"
+﻿#include "CTest.h"
 #include <iostream>
 
-C_Test::~C_Test()
+CTest::~CTest()
 {
     std::cout << "Deleting test component from actor" << std::endl;
 }
 
-void C_Test::TickComponent(float delta_time)
+void CTest::TickComponent(float delta_time)
 {
     //Component::TickComponent(delta_time);
     //std::cout << "Updating component with order " << GetUpdateOrder() << std::endl;

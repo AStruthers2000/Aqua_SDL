@@ -5,7 +5,7 @@
 
 #include "GameSubState.h"
 #include "Actor/Actor.h"
-#include "Component/C_Render.h"
+#include "Component/Rendering/CRenderer.h"
 //#include "Game.h"
 
 namespace AquaEngine
@@ -46,7 +46,7 @@ namespace AquaEngine
         }
         pending_actors_.clear();
 
-        std::vector<Actor*> dead_actors;
+        std::vector<std::shared_ptr<Actor>> dead_actors;
         for(const auto& actor : actors_)
         {
             if(actor->GetActorState() == Actor::EDead)
@@ -57,8 +57,10 @@ namespace AquaEngine
 
         for(const auto& actor : dead_actors)
         {
-            delete actor;
+            TryEraseActor(&actors_, actor);
+            //delete actor;
         }
+        dead_actors.clear();
     }
 
     void GameState::Render(SDL_Renderer* renderer)
@@ -69,7 +71,7 @@ namespace AquaEngine
         }
     }
 
-    void GameState::AddActor(Actor* actor)
+    void GameState::AddActor(const std::shared_ptr<Actor>& actor)
     {
         if(updating_actors_)
         {
@@ -84,7 +86,7 @@ namespace AquaEngine
         }
     }
     
-    void GameState::RemoveActor(const Actor* actor)
+    void GameState::RemoveActor(const std::shared_ptr<Actor>& actor)
     {
         if(!TryEraseActor(&actors_, actor))
         {
@@ -95,7 +97,7 @@ namespace AquaEngine
         }
     }
 
-    bool GameState::TryEraseActor(std::vector<Actor*>* list, const Actor* actor)
+    bool GameState::TryEraseActor(std::vector<std::shared_ptr<Actor>>* list, const std::shared_ptr<Actor> actor)
     {
         bool actor_found = false;
         
@@ -111,7 +113,7 @@ namespace AquaEngine
         if(actor_found)
         {
             list->erase(list->begin() + static_cast<long long>(i));
-            delete actor;
+            //delete actor;
             return true;
         }
 
@@ -134,7 +136,7 @@ namespace AquaEngine
         current_substate = nullptr;
     }
 
-    void GameState::RegisterRendererComponent(C_Render* render_component)
+    void GameState::RegisterRendererComponent(CRenderer* render_component)
     {
         const int draw_order = render_component->GetDrawOrder();
         auto iter = render_components.begin();

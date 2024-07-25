@@ -4,14 +4,15 @@
 
 #include "GameSubState_PauseMenu.h"
 
-#include "../Actors/A_Test.h"
+#include "../Actors/ATest.h"
+#include "../Actors/Chess/AChessBoard.h"
 
-#include "Component/C_Render.h"
+#include "Component/Rendering/CRenderer.h"
 
 GameState_ChessDemo::~GameState_ChessDemo()
 {
     std::cout << "Destroying chess demo" << std::endl;
-    //TODO: this line is the issue... for some reason
+    //TODO: this line is the "crash when exiting from pause menu state during chess demo" issue... for some reason
     //GameState::~GameState();
     std::cout << "Successfully called parent destructor" << std::endl;
 
@@ -28,7 +29,8 @@ void GameState_ChessDemo::BeginPlay()
     
     std::cout << "Starting chess demo" << std::endl;
 
-    AddActor(new A_Test(this));
+    //AddActor(new ATest(this));
+    AddActor(std::make_shared<AChessBoard>(this));
 }
 
 void GameState_ChessDemo::HandleInput(SDL_Event& event)

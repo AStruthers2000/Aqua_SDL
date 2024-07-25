@@ -1,10 +1,10 @@
 ﻿#pragma once
 #include "Actor/Actor.h"
 
-class A_Test : public AquaEngine::Actor
+class ATest : public AquaEngine::Actor
 {
 public:
-    explicit A_Test(AquaEngine::GameState* game_state)
+    explicit ATest(AquaEngine::GameState* game_state)
         : Actor(game_state)
     {
         test = (int*)malloc(sizeof(int) * 1000000);
@@ -14,7 +14,7 @@ public:
         }
     }
 
-    ~A_Test() override;
+    ~ATest() override;
     void BeginPlay() override;
     void TickActor(float delta_time) override;
 

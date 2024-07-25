@@ -30,7 +30,7 @@ namespace AquaEngine
         }
     }
 
-    void Actor::AddComponent(Component* component)
+    void Actor::AddComponent(const std::shared_ptr<Component>& component)
     {
         if(components_.empty())
         {
@@ -50,8 +50,8 @@ namespace AquaEngine
         }
     }
 
-    void Actor::RemoveComponent(const Component* component)
+    void Actor::RemoveComponent(const std::shared_ptr<Component>& component)
     {
-        delete component;
+        //delete component;
     }
 }

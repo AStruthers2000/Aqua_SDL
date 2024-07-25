@@ -10,7 +10,7 @@
 
 namespace AquaEngine
 {
-    class C_Render;
+    class CRenderer;
     class Actor;
     class Game;
     class GameSubState;
@@ -28,14 +28,14 @@ namespace AquaEngine
 
 
         
-        void AddActor(Actor* actor);
-        void RemoveActor(const Actor* actor);
-        std::vector<Actor*> GetActors() { return actors_; }
+        void AddActor(const std::shared_ptr<Actor>& actor);
+        void RemoveActor(const std::shared_ptr<Actor>& actor);
+        std::vector<std::shared_ptr<Actor>> GetActors() { return actors_; }
         
         void SetSubState(std::unique_ptr<GameSubState> substate);
         //void SetSubState(GameSubState* substate);
         void ClearSubState();
-        void RegisterRendererComponent(C_Render* render_component);
+        void RegisterRendererComponent(CRenderer* render_component);
 
     
     
@@ -48,12 +48,12 @@ namespace AquaEngine
     private:
         std::string name_;
         bool updating_actors_;
-        std::vector<Actor*> actors_;
-        std::vector<Actor*> pending_actors_;
-        bool TryEraseActor(std::vector<Actor*>* list, const Actor* actor);
+        std::vector<std::shared_ptr<Actor>> actors_;
+        std::vector<std::shared_ptr<Actor>> pending_actors_;
+        bool TryEraseActor(std::vector<std::shared_ptr<Actor>>* list, const std::shared_ptr<Actor> actor);
 
     
-        std::vector<C_Render*> render_components;
+        std::vector<CRenderer*> render_components;
 
        
     };
