@@ -14,6 +14,7 @@ ATest::~ATest()
 void ATest::BeginPlay()
 {
     std::cout << "Beginning test actor" << std::endl;
+    /*
     AddComponent(std::make_shared<CTest>(this, 10));
     AddComponent(std::make_shared<CTest>(this, 100));
     AddComponent(std::make_shared<CTest>(this, 9));
@@ -23,6 +24,7 @@ void ATest::BeginPlay()
         AquaColor{100, 100, 255, 255},
         AquaEngine::Vector2{50, 50},
         AquaEngine::Vector2{100, 100}));
+        */
 }
 
 void ATest::TickActor(float delta_time)

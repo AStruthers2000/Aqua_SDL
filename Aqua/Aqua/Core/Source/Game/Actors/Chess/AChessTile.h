@@ -11,15 +11,22 @@ public:
         : Actor(game_state)
     {
 
+        //const AquaEngine::Bounds bounds = {50, 50}; 
+        //SetActorBounds(bounds);
+
+
+        
+        const auto size = AquaEngine::Vector2{50.f};
+
         
         const auto c = std::make_shared<AquaEngine::CSquareRenderer>(
             this,
             10,
             tile_color,
-            AquaEngine::Vector2(0, 0),
-            AquaEngine::Vector2(25, 25));
+            size);
 
         AddComponent(c);
+        
     }
 
     ~AChessTile() override;

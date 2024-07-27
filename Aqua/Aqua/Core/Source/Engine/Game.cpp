@@ -14,19 +14,19 @@ namespace AquaEngine
     {
         if (SDL_Init(SDL_INIT_VIDEO) < 0)
         {
-            std::cerr << "SDL could not initialize! SDL_Error: " << SDL_GetError() << std::endl;
+            std::cerr << "[Game::Game]:\tSDL could not initialize! SDL_Error: " << SDL_GetError() << std::endl;
         }
 
         window = SDL_CreateWindow("Aqua",
             SDL_WINDOWPOS_CENTERED,
             SDL_WINDOWPOS_CENTERED,
-            800,
-            600,
+            screen_dimensions.x,
+            screen_dimensions.y,
             0);
 
         if(window == nullptr)
         {
-            std::cerr << "Window could not be created! SDL_Error: " << SDL_GetError() << std::endl;
+            std::cerr << "[Game::Game]:\tWindow could not be created! SDL_Error: " << SDL_GetError() << std::endl;
         }
 
         renderer = SDL_CreateRenderer(window,
@@ -35,18 +35,18 @@ namespace AquaEngine
 
         if(renderer == nullptr)
         {
-            std::cerr << "Renderer could not be created! SDL_Error: " << SDL_GetError() << std::endl;
+            std::cerr << "[Game::Game]:\tRenderer could not be created! SDL_Error: " << SDL_GetError() << std::endl;
         }
 
         PushGameState(std::make_unique<GameState_MainMenu>(this, "Main Menu"));
 
         is_running = true;
-        std::cout << "Game initialized successfully" << std::endl;
+        std::cout << "[Game::Game]:\tGame initialized successfully" << std::endl;
     }
 
     Game::~Game()
     {
-        std::cout << "Quitting game and destroying game states" << std::endl;
+        std::cout << "[Game::~Game]:\tQuitting game and destroying game states" << std::endl;
         while(!game_states.empty())
         {
             game_states.pop();
@@ -60,7 +60,7 @@ namespace AquaEngine
     void Game::Run()
     {
         const float frame_delay { 1000.0f / target_fps };
-        std::cout << "Running game with a target FPS of " << target_fps << " and a frame delay of " << frame_delay << " ms" << std::endl;
+        std::cout << "[Game::Run]:\tRunning game with a target FPS of " << target_fps << " and a frame delay of " << frame_delay << " ms" << std::endl;
 
         //float frame_time { 0.f };
         Uint64 tick_count_from_start { 0 };
@@ -74,7 +74,7 @@ namespace AquaEngine
             //if(delta_time > 0.05f) delta_time = 0.05f;
             if(delta_time > 1.f)
             {
-                std::cerr << "Less than 1 fps detected..." << std::endl;
+                std::cerr << "[Game::Run]:\tLess than 1 fps detected..." << std::endl;
                 delta_time = 1.f;
             }
             tick_count_from_start = SDL_GetTicks64();
@@ -84,8 +84,8 @@ namespace AquaEngine
             Render();
 
 
-            std::cout << "delta time: " << delta_time << std::endl;
-            std::cout << "frame ticks: " << tick_count_from_start << std::endl;
+            //std::cout << "[Game::Run]:\tdelta time: " << delta_time << std::endl;
+            //std::cout << "[Game::Run]:\tframe ticks: " << tick_count_from_start << std::endl;
         }
     }
 

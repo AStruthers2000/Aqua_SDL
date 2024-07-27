@@ -39,7 +39,7 @@ void GameState_ChessDemo::HandleInput(SDL_Event& event)
     
     if(current_substate)
     {
-        std::cout << "Valid chess demo substate, handling input there instead" << std::endl;
+        //std::cout << "Valid chess demo substate, handling input there instead" << std::endl;
         current_substate->HandleInput(event);
     }
     else

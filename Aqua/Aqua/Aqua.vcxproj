@@ -162,7 +162,8 @@
   <ItemGroup>
     <ClCompile Include="Aqua.cpp" />
     <ClCompile Include="Core\Source\Engine\Actor\Actor.cpp" />
-    <ClCompile Include="Core\Source\Engine\AquaColor.cpp" />
+    <ClCompile Include="Core\Source\Engine\Component\Collision\CCollider.cpp" />
+    <ClCompile Include="Core\Source\Engine\Component\Collision\CSquareCollider.cpp" />
     <ClCompile Include="Core\Source\Engine\Component\Component.cpp">
       <RuntimeLibrary>MultiThreadedDebugDll</RuntimeLibrary>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -413,6 +414,8 @@
   <ItemGroup>
     <ClInclude Include="Core\Source\Engine\Actor\Actor.h" />
     <ClInclude Include="Core\Source\Engine\AquaColor.h" />
+    <ClInclude Include="Core\Source\Engine\Component\Collision\CCollider.h" />
+    <ClInclude Include="Core\Source\Engine\Component\Collision\CSquareCollider.h" />
     <ClInclude Include="Core\Source\Engine\Component\Component.h" />
     <ClInclude Include="Core\Source\Engine\Component\Grid\CGridComponent.h" />
     <ClInclude Include="Core\Source\Engine\Component\Rendering\CRenderer.h" />
@@ -421,6 +424,9 @@
     <ClInclude Include="Core\Source\Engine\Game.h" />
     <ClInclude Include="Core\Source\Engine\GameStates\GameState.h" />
     <ClInclude Include="Core\Source\Engine\GameStates\GameSubState.h" />
+    <ClInclude Include="Core\Source\Engine\Math\Bounds.h" />
+    <ClInclude Include="Core\Source\Engine\Math\Point.h" />
+    <ClInclude Include="Core\Source\Engine\Math\Transform.h" />
     <ClInclude Include="Core\Source\Engine\Math\Vector.h" />
     <ClInclude Include="Core\Source\Game\Actors\ATest.h" />
     <ClInclude Include="Core\Source\Game\Actors\Chess\AChessBoard.h" />

@@ -8,9 +8,8 @@ namespace AquaEngine
     Actor::Actor(GameState* game_state) :  game_state_(game_state)
     {
         state_ = EActive;
-        position_ = {0, 0};
-        scale_ = {1, 1};
-        rotation_ = 0;
+        transform_ = {};
+        //bounds_ = {0, 0};
     }
 
     void Actor::Tick(float delta_time)
@@ -53,5 +52,6 @@ namespace AquaEngine
     void Actor::RemoveComponent(const std::shared_ptr<Component>& component)
     {
         //delete component;
+        std::erase(components_, component);
     }
 }
