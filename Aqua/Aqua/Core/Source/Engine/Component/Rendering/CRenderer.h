@@ -21,6 +21,7 @@ namespace AquaEngine
 
         int GetDrawOrder() const { return draw_order_; }
         Bounds GetBounds() const { return bounds_; }
+        Bounds* GetBoundsRef() { return &bounds_; }
 
     protected:
         int draw_order_;

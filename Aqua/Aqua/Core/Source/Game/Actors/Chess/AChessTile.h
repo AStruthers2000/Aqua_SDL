@@ -21,7 +21,7 @@ public:
         
         const auto c = std::make_shared<AquaEngine::CSquareRenderer>(
             this,
-            10,
+            1000,
             tile_color,
             size);
 

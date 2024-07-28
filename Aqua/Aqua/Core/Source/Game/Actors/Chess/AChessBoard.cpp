@@ -18,6 +18,7 @@ void AChessBoard::BeginPlay()
         10,
         chess_tile_factory);
     AddComponent(board);
+    AddComponent(std::make_shared<AquaEngine::CSquareRenderer>(this, 1, AquaColor{255, 0, 255, 255}, AquaEngine::Vector2{0.f, 0.f}));
 
     SetActorPosition(AquaEngine::Vector2(AquaEngine::screen_dimensions.x / 2,AquaEngine::screen_dimensions.y / 2));
     board->UpdateGridPosition();
@@ -27,6 +28,12 @@ void AChessBoard::BeginPlay()
         std::cout << "[AChessBoard::BeginPlay]:\tMy bounds are (" << collider->GetBounds().GetSize().x << ", " << collider->GetBounds().GetSize().y << ")" << std::endl;
         std::cout << "[AChessBoard::BeginPlay]:\tMy top left corner is at (" << collider->GetBounds().GetMin().x + GetActorPosition().x << ", " << collider->GetBounds().GetMin().y + GetActorPosition().y <<
             "), and my bottom right corner is at (" << collider->GetBounds().GetMax().x  + GetActorPosition().x << ", " << collider->GetBounds().GetMax().y + GetActorPosition().y << ")" <<std::endl;
+
+        if(const auto renderer = TryGetComponent<AquaEngine::CSquareRenderer>())
+        {
+            std::cout << "[AChessBoard::BeginPlay]:\tUpdating renderer size" << std::endl;
+            renderer->GetBoundsRef()->SetSize(collider->GetBounds().GetSize());
+        }
     }
 }
 
